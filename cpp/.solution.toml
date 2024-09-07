@@ -1,0 +1,6 @@
+[Run]
+entry_point = "./running_case.cpp"
+output = "./out"
+arguments = "-Wall -O2 running_case.cpp -o running_case.exe"
+
+

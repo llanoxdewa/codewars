@@ -1,0 +1,84 @@
+# import os,random,re
+import random
+
+def test(func):
+    def wrap(*arg):
+        return [*arg,func(*arg)] 
+    return wrap
+
+#--------------------------------------SOLUTION--------------------------------------------------#
+@test
+def word_mesh(words):
+    mesh = ''
+    N = len(words)
+
+    for i in range(N - 1):
+        # n = len(words[i])
+        x = words[i][-1]
+        fx = 0 
+        j = 0
+        nsx = 1
+        while words[i][-(nsx + 1)] == x:
+            nsx += 1       
+        ifx = words[i + 1].index(x)
+        sfx = 1
+        while words[i + 1][ifx + 1] == x and sfx < nsx:
+            ifx += 1
+            sfx += 1
+
+        if sfx < nsx: continue 
+        
+        while words[i][-(j + 1)] == words[i + 1][fx]:
+            mesh += words[i][-(j + 1)] 
+            j += 1
+
+
+        # while words[i][-(nsx + 2)] == x:
+            # nsx += 1
+        # flc = words[i + 1].index(x)
+
+        # while words[i + 1][flc + 1] == x:
+            # flc += 1
+    
+
+        # curr = words[i][-1:-(flc + 2):-1][::-1]
+        # find = words[i + 1][0:flc + 1] 
+        
+
+
+    return mesh or "failed to mesh"
+
+hasil = [] 
+def cek(ans,rans,*trash):
+    hasil.append((ans[-1],rans,ans[:-1]))
+    
+#--------------------------------------cekING---------------------------------------------------# 
+# cek(word_mesh(["beacon", "condominium", "umbilical", "california"]), "conumcal")
+cek(word_mesh(["allow", "lowering", "ringmaster", "terror"]), "lowringter")
+# cek(word_mesh(["abandon", "donation", "onion", "ongoing"]), "dononon")
+# cek(word_mesh(["jamestown", "ownership", "hippocampus", "pushcart", "cartographer", "pheromone"]), "ownhippuscartpher")
+
+
+#ceking code
+i = 1 
+gagal = 0
+for a,v,args in hasil:
+    if a==v:
+        print(f'case#{i} solved')
+    else:
+        gagal += 1
+        print(f'case#{i} failed')
+        print(f'\targs: {args}')
+        print(f'\tresult--> {a}')
+        print(f'\tshould equal--> {v}')
+    i += 1
+print("----------------------------------")
+print(f"{gagal} / {len(hasil)} cek gagal")
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+
+[Aimport codewars_test as test
+from solution import get_day
+
+@test.describe("Solution")
+def test_group():
+    @test.it("Basic tests")
+    def test_case():
+        test.assert_equals(get_day(15, False), "January, 15")
+        test.assert_equals(get_day(41, False), "February, 10")
+        test.assert_equals(get_day(59, False), "February, 28")
+        test.assert_equals(get_day(60, False), "March, 1")
+        test.assert_equals(get_day(60, True), "February, 29")
+        test.assert_equals(get_day(365, False), "December, 31")
+        test.assert_equals(get_day(366, True), "December, 31")
+        

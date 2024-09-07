@@ -1,0 +1,25 @@
+// how to find duplicate in array
+function isIsogram(str){
+    const jejak = {};
+    let hasil = 0;
+    str.toLowerCase().split('').forEach(char => {
+        if(!jejak[char]){
+            jejak[char] = 0;
+        }
+        jejak[char]++;
+    });
+    for(k in jejak){
+        if(jejak[k] > 1){
+            return false;
+        }
+    }
+    return true;
+}
+
+
+// memeriksa apakah sebuah nilai int atau tidak
+Number.isInteger(value)
+
+
+
+
